@@ -29,7 +29,7 @@ function Terms() {
           <p>You have a 14-day cooling-off period under Consumer Contracts Regulations 2013. After installation begins, cancellation may attract costs for materials and labour committed.</p>
           <h2 className="text-2xl font-bold mt-6">5. Warranties</h2>
           <p>Manufacturer warranties apply to panels, inverters and batteries. We provide a workmanship warranty as described in your contract.</p>
-          <h2 className="text-2xl function-bold mt-6">6. Liability</h2>
+          <h2 className="text-2xl font-bold mt-6">6. Liability</h2>
           <p>Nothing in these terms excludes or limits liability that cannot be excluded under English law. Otherwise, our liability is limited to the contract value.</p>
           <h2 className="text-2xl font-bold mt-6">7. Governing law</h2>
           <p>These terms are governed by the laws of England and Wales.</p>
