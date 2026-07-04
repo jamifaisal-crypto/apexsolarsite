@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBand } from "@/components/site/Section";
+import { PageHero, Section, SectionHeading, CtaBand, TrustBar } from "@/components/site/Section";
 import { Building2, Tractor, Store, ShieldCheck, TrendingUp, Leaf, CheckCircle2 } from "lucide-react";
 import img from "@/assets/commercial.jpg";
 
@@ -20,10 +20,17 @@ export const Route = createFileRoute("/commercial")({
 function Commercial() {
   return (
     <>
-      <PageHero eyebrow="Commercial" title="Solar & storage for UK businesses" subtitle="Warehouses, farms, offices, retail. We design, install and commission systems up to 50 kW+ with clear ROI analysis.">
+      <PageHero
+        eyebrow="Commercial Solar"
+        title="Solar & Storage for UK Businesses"
+        subtitle="Warehouses, farms, offices and retail. We design, install and commission systems up to 50 kW+ with clear ROI analysis."
+        image={img}
+        imageAlt="Large warehouse rooftop with commercial solar panel installation"
+      >
         <Link to="/contact" className="btn-primary btn-primary-hover">Request Commercial Quote</Link>
-        <a href="tel:+442087092051" className="btn-accent">Call Our Office</a>
+        <a href="tel:+442087092051" className="btn-outline-navy">Call Our Office</a>
       </PageHero>
+      <TrustBar />
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-10 items-center">

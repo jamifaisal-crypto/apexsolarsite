@@ -4,7 +4,7 @@ import hero from "@/assets/hero.jpg";
 import solar from "@/assets/solar-panels.jpg";
 import battery from "@/assets/battery.jpg";
 import commercial from "@/assets/commercial.jpg";
-import { Section, SectionHeading, CtaBand } from "@/components/site/Section";
+import { Section, SectionHeading, CtaBand, TrustBar, CertificationCards } from "@/components/site/Section";
 import { LeadForm } from "@/components/site/LeadForm";
 import { packages, included, finance, faqs } from "@/lib/site-data";
 
@@ -66,6 +66,35 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <TrustBar />
+
+      {/* Recent Installations */}
+      <Section>
+        <SectionHeading eyebrow="Recent Installations" title="Real projects, real savings" subtitle="A snapshot of recent solar and battery installations we've completed for UK homeowners." />
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { img: hero, location: "Essex", size: "5.46 kWp", battery: "Fox ESS EP6 (5.76 kWh)", time: "2 days" },
+            { img: solar, location: "Kent", size: "6.80 kWp", battery: "Fox ESS EP12 (11.52 kWh)", time: "2 days" },
+            { img: battery, location: "London", size: "4.10 kWp", battery: "Fox ESS EP6 (5.76 kWh)", time: "1 day" },
+          ].map((p) => (
+            <div key={p.location} className="card-soft card-hover !p-0 overflow-hidden">
+              <img src={p.img} alt={`Solar installation in ${p.location}`} className="w-full aspect-[4/3] object-cover" loading="lazy" />
+              <div className="p-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-green-brand">{p.location}</p>
+                <div className="mt-3 grid grid-cols-2 gap-y-2 text-sm">
+                  <span className="text-muted-foreground">System size</span><span className="font-semibold text-navy text-right">{p.size}</span>
+                  <span className="text-muted-foreground">Battery</span><span className="font-semibold text-navy text-right">{p.battery}</span>
+                  <span className="text-muted-foreground">Install time</span><span className="font-semibold text-navy text-right">{p.time}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <Link to="/gallery" className="btn-outline-navy">View All Projects</Link>
+        </div>
+      </Section>
 
       {/* Why choose us */}
       <Section>
@@ -245,6 +274,11 @@ function HomePage() {
             <LeadForm />
           </div>
         </div>
+      </Section>
+
+      <Section className="bg-muted">
+        <SectionHeading eyebrow="Credentials" title="Fully certified and insured" />
+        <CertificationCards />
       </Section>
 
       <CtaBand />

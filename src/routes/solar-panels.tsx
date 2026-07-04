@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBand } from "@/components/site/Section";
+import { PageHero, Section, SectionHeading, CtaBand, TrustBar } from "@/components/site/Section";
 import { CheckCircle2, Sun, Zap, Leaf, ShieldCheck } from "lucide-react";
 import img from "@/assets/solar-panels.jpg";
 
@@ -20,10 +20,22 @@ export const Route = createFileRoute("/solar-panels")({
 function SolarPanels() {
   return (
     <>
-      <PageHero eyebrow="Solar PV" title="Solar Panels installed the right way" subtitle="Tier-1 monocrystalline panels, expert design, and clean, careful installation for UK homes.">
+      <PageHero
+        eyebrow="Solar Panel Installation"
+        title="Professional Solar Panel Installation Across the UK"
+        subtitle="Reduce your electricity bills with premium Tier-1 solar panels installed by experienced MCS-certified professionals."
+        image={img}
+        imageAlt="Modern UK home with black solar panels at golden hour"
+      >
         <Link to="/contact" className="btn-primary btn-primary-hover">Book Free Survey</Link>
-        <a href="tel:+447954303766" className="btn-accent">Call Now</a>
+        <a href="tel:+447954303766" className="btn-outline-navy">Call Now</a>
+        <ul className="w-full grid grid-cols-2 gap-x-6 gap-y-2 mt-2 text-sm text-navy">
+          {["MCS Certified", "25+ Year Panel Performance", "Finance Available", "Free Survey"].map((x) => (
+            <li key={x} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-brand" /> {x}</li>
+          ))}
+        </ul>
       </PageHero>
+      <TrustBar />
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-10 items-center">

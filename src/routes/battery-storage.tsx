@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBand } from "@/components/site/Section";
+import { PageHero, Section, SectionHeading, CtaBand, TrustBar } from "@/components/site/Section";
 import { Battery, Zap, Moon, ShieldCheck, CheckCircle2 } from "lucide-react";
 import img from "@/assets/battery.jpg";
 
@@ -20,10 +20,22 @@ export const Route = createFileRoute("/battery-storage")({
 function BatteryStorage() {
   return (
     <>
-      <PageHero eyebrow="Battery Storage" title="Use your solar day and night" subtitle="Fox ESS lithium batteries with heating function, hybrid inverter and 10-year warranty — installed by our MCS-certified team.">
+      <PageHero
+        eyebrow="Battery Storage"
+        title="Store Your Solar Energy. Use It Whenever You Need It."
+        subtitle="Store excess electricity generated during the day and power your home throughout the evening with premium battery storage systems."
+        image={img}
+        imageAlt="Modern Fox ESS battery storage system in a clean utility room"
+      >
         <Link to="/contact" className="btn-primary btn-primary-hover">Book Free Survey</Link>
-        <a href="https://wa.me/447954303766" className="btn-outline-navy" target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="tel:+447954303766" className="btn-outline-navy">Call Now</a>
+        <ul className="w-full grid grid-cols-2 gap-x-6 gap-y-2 mt-2 text-sm text-navy">
+          {["10-Year Warranty", "Fox ESS EP6 & EP12", "Time-of-use Ready", "MCS Certified"].map((x) => (
+            <li key={x} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-brand" /> {x}</li>
+          ))}
+        </ul>
       </PageHero>
+      <TrustBar />
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-10 items-center">
