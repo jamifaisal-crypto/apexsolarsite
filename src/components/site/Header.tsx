@@ -8,6 +8,7 @@ const nav = [
   { to: "/solar-panels", label: "Solar Panels" },
   { to: "/battery-storage", label: "Battery Storage" },
   { to: "/pricing-finance", label: "Pricing & Finance" },
+  { to: "/savings-calculator", label: "Savings Calculator" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;

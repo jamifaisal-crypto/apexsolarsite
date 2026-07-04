@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sun, Battery, PoundSterling, ShieldCheck, ClipboardCheck, Ruler, PenTool, Wrench, Sparkles, Star, Award, HandCoins, Leaf, Zap, MapPin, Users } from "lucide-react";
+import { Sun, Battery, PoundSterling, ShieldCheck, ClipboardCheck, Ruler, PenTool, Wrench, Sparkles, Star, Award, HandCoins, Leaf, Zap, MapPin, Users, Calculator } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import solar from "@/assets/solar-panels.jpg";
 import battery from "@/assets/battery.jpg";
@@ -47,6 +47,7 @@ function HomePage() {
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-primary btn-primary-hover">Book Free Survey</Link>
+              <Link to="/savings-calculator" className="btn-outline-navy"><Calculator className="w-4 h-4" /> Calculate your savings</Link>
               <a href="tel:+447954303766" className="btn-outline-navy">Call Now</a>
             </div>
           </div>
