@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBand } from "@/components/site/Section";
-import { Award, Users, ShieldCheck, Leaf, Heart } from "lucide-react";
+import { PageHero, Section, SectionHeading, CtaBand, TrustBar, CertificationCards, PartnerLogosStrip } from "@/components/site/Section";
+import { Award, Users, ShieldCheck, Leaf } from "lucide-react";
 import img from "@/assets/installer.jpg";
 
 export const Route = createFileRoute("/about")({
@@ -20,7 +20,14 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <>
-      <PageHero eyebrow="Our story" title="A local team, national reach" subtitle="We're on a mission to help UK homes and businesses generate their own clean energy and take control of rising bills." />
+      <PageHero
+        eyebrow="Our Story"
+        title="A Local Team, National Reach"
+        subtitle="We're on a mission to help UK homes and businesses generate their own clean energy and take control of rising bills."
+        image={img}
+        imageAlt="Apex Aims installation team working on a UK roof"
+      />
+      <TrustBar />
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -51,12 +58,13 @@ function About() {
       </Section>
 
       <Section>
-        <SectionHeading eyebrow="Credentials" title="Fully certified and insured" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 text-center">
-          {["MCS Certified Installer", "NICEIC Approved Electricians", "Public Liability Insured", "RECC Consumer Code"].map((x) => (
-            <div key={x} className="card-soft"><Heart className="mx-auto w-6 h-6 text-orange-brand" /><p className="mt-3 font-semibold text-navy text-sm">{x}</p></div>
-          ))}
-        </div>
+        <SectionHeading eyebrow="Credentials" title="Fully certified and insured" subtitle="Real accreditations, not marketing badges. Every installation is delivered to the standards below." />
+        <CertificationCards />
+      </Section>
+
+      <Section className="bg-muted">
+        <SectionHeading eyebrow="Trusted memberships" title="Our trusted partners & certifications" />
+        <PartnerLogosStrip />
       </Section>
 
       <CtaBand />

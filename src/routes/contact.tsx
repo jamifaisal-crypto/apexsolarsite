@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, Section } from "@/components/site/Section";
+import { PageHero, Section, TrustBar } from "@/components/site/Section";
 import { Phone, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
 import { LeadForm } from "@/components/site/LeadForm";
+import img from "@/assets/installer.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -20,7 +21,17 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   return (
     <>
-      <PageHero eyebrow="Get in touch" title="Book your free survey" subtitle="One of our MCS-certified surveyors will reply within one working day." />
+      <PageHero
+        eyebrow="Get in Touch"
+        title="Book Your Free Survey"
+        subtitle="One of our MCS-certified surveyors will reply within one working day."
+        image={img}
+        imageAlt="Apex Aims engineer meeting a customer to plan a solar installation"
+      >
+        <a href="tel:+447954303766" className="btn-primary btn-primary-hover"><Phone className="w-4 h-4" /> Call +44 7954 303766</a>
+        <a href="https://wa.me/447954303766" target="_blank" rel="noopener" className="btn-outline-navy"><MessageCircle className="w-4 h-4" /> WhatsApp</a>
+      </PageHero>
+      <TrustBar />
 
       <Section>
         <div className="grid lg:grid-cols-5 gap-10">
@@ -38,14 +49,6 @@ function Contact() {
                 <li className="flex gap-3"><MapPin className="w-5 h-5 text-green-brand" /> 1st Floor, Wellesley House, 98–102 Cranbrook Road, Ilford, IG1 4NH</li>
                 <li className="flex gap-3"><Clock className="w-5 h-5 text-green-brand" /> Mon–Sat 8:00–18:00</li>
               </ul>
-            </div>
-            <div className="card-soft bg-navy text-white">
-              <h3 className="font-semibold text-lg">Prefer to talk now?</h3>
-              <p className="text-white/80 text-sm mt-2">We answer calls fast. If lines are busy, WhatsApp us and we'll come back to you.</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <a href="tel:+447954303766" className="btn-accent">Call Now</a>
-                <a href="https://wa.me/447954303766" target="_blank" rel="noopener" className="btn-outline-navy !bg-transparent !text-white !border-white/40 hover:!bg-white/10">WhatsApp</a>
-              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section, SectionHeading, CtaBand } from "@/components/site/Section";
+import { PageHero, Section, SectionHeading, CtaBand, TrustBar } from "@/components/site/Section";
 import { ShieldCheck, HandCoins, Calculator } from "lucide-react";
 import { finance } from "@/lib/site-data";
+import img from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/finance")({
   head: () => ({
@@ -20,9 +21,17 @@ export const Route = createFileRoute("/finance")({
 function Finance() {
   return (
     <>
-      <PageHero eyebrow="Flexible finance" title="Start saving from day one" subtitle="Multiple finance options so you can install solar and batteries without a big upfront cost.">
+      <PageHero
+        eyebrow="Flexible Finance"
+        title="Start Saving From Day One"
+        subtitle="Multiple finance options so you can install solar and batteries without a big upfront cost."
+        image={img}
+        imageAlt="Happy family outside their UK home with solar installation"
+      >
         <Link to="/contact" className="btn-primary btn-primary-hover">Book Free Survey</Link>
+        <a href="tel:+447954303766" className="btn-outline-navy">Call Now</a>
       </PageHero>
+      <TrustBar />
 
       <Section>
         <div className="grid md:grid-cols-3 gap-5">
