@@ -14,6 +14,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SolarPanelsRouteImport } from './routes/solar-panels'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingFinanceRouteImport } from './routes/pricing-finance'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -45,6 +46,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingFinanceRoute = PricingFinanceRouteImport.update({
+  id: '/pricing-finance',
+  path: '/pricing-finance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
+  '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
+  '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
+  '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/faq'
     | '/gallery'
+    | '/pricing-finance'
     | '/privacy'
     | '/sitemap.xml'
     | '/solar-panels'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/faq'
     | '/gallery'
+    | '/pricing-finance'
     | '/privacy'
     | '/sitemap.xml'
     | '/solar-panels'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/faq'
     | '/gallery'
+    | '/pricing-finance'
     | '/privacy'
     | '/sitemap.xml'
     | '/solar-panels'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
+  PricingFinanceRoute: typeof PricingFinanceRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolarPanelsRoute: typeof SolarPanelsRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing-finance': {
+      id: '/pricing-finance'
+      path: '/pricing-finance'
+      fullPath: '/pricing-finance'
+      preLoaderRoute: typeof PricingFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
+  PricingFinanceRoute: PricingFinanceRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolarPanelsRoute: SolarPanelsRoute,
