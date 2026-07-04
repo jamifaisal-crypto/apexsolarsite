@@ -14,12 +14,11 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SolarPanelsRouteImport } from './routes/solar-panels'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingFinanceRouteImport } from './routes/pricing-finance'
 import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CommercialRouteImport } from './routes/commercial'
 import { Route as BatteryStorageRouteImport } from './routes/battery-storage'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -49,14 +48,14 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PricingFinanceRoute = PricingFinanceRouteImport.update({
+  id: '/pricing-finance',
+  path: '/pricing-finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FinanceRoute = FinanceRouteImport.update({
-  id: '/finance',
-  path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -72,11 +71,6 @@ const CookiesRoute = CookiesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CommercialRoute = CommercialRouteImport.update({
-  id: '/commercial',
-  path: '/commercial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BatteryStorageRoute = BatteryStorageRouteImport.update({
@@ -99,12 +93,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/battery-storage': typeof BatteryStorageRoute
-  '/commercial': typeof CommercialRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
-  '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
+  '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
@@ -115,12 +108,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/battery-storage': typeof BatteryStorageRoute
-  '/commercial': typeof CommercialRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
-  '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
+  '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
@@ -132,12 +124,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/battery-storage': typeof BatteryStorageRoute
-  '/commercial': typeof CommercialRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
-  '/finance': typeof FinanceRoute
   '/gallery': typeof GalleryRoute
+  '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
@@ -150,12 +141,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/battery-storage'
-    | '/commercial'
     | '/contact'
     | '/cookies'
     | '/faq'
-    | '/finance'
     | '/gallery'
+    | '/pricing-finance'
     | '/privacy'
     | '/sitemap.xml'
     | '/solar-panels'
@@ -166,12 +156,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/battery-storage'
-    | '/commercial'
     | '/contact'
     | '/cookies'
     | '/faq'
-    | '/finance'
     | '/gallery'
+    | '/pricing-finance'
     | '/privacy'
     | '/sitemap.xml'
     | '/solar-panels'
@@ -182,12 +171,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/battery-storage'
-    | '/commercial'
     | '/contact'
     | '/cookies'
     | '/faq'
-    | '/finance'
     | '/gallery'
+    | '/pricing-finance'
     | '/privacy'
     | '/sitemap.xml'
     | '/solar-panels'
@@ -199,12 +187,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BatteryStorageRoute: typeof BatteryStorageRoute
-  CommercialRoute: typeof CommercialRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   FaqRoute: typeof FaqRoute
-  FinanceRoute: typeof FinanceRoute
   GalleryRoute: typeof GalleryRoute
+  PricingFinanceRoute: typeof PricingFinanceRoute
   PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolarPanelsRoute: typeof SolarPanelsRoute
@@ -249,18 +236,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pricing-finance': {
+      id: '/pricing-finance'
+      path: '/pricing-finance'
+      fullPath: '/pricing-finance'
+      preLoaderRoute: typeof PricingFinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/finance': {
-      id: '/finance'
-      path: '/finance'
-      fullPath: '/finance'
-      preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -282,13 +269,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/commercial': {
-      id: '/commercial'
-      path: '/commercial'
-      fullPath: '/commercial'
-      preLoaderRoute: typeof CommercialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/battery-storage': {
@@ -319,12 +299,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BatteryStorageRoute: BatteryStorageRoute,
-  CommercialRoute: CommercialRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   FaqRoute: FaqRoute,
-  FinanceRoute: FinanceRoute,
   GalleryRoute: GalleryRoute,
+  PricingFinanceRoute: PricingFinanceRoute,
   PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolarPanelsRoute: SolarPanelsRoute,

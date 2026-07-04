@@ -46,7 +46,7 @@ function Contact() {
                 <li className="flex gap-3"><Phone className="w-5 h-5 text-green-brand" /> <a href="tel:+442087092051">+44 20 8709 2051</a></li>
                 <li className="flex gap-3"><Mail className="w-5 h-5 text-green-brand" /> <a href="mailto:info@apexaimsgrantsltd.co.uk">info@apexaimsgrantsltd.co.uk</a></li>
                 <li className="flex gap-3"><MessageCircle className="w-5 h-5 text-green-brand" /> <a href="https://wa.me/447954303766" target="_blank" rel="noopener">WhatsApp us</a></li>
-                <li className="flex gap-3"><MapPin className="w-5 h-5 text-green-brand" /> 1st Floor, Wellesley House, 98–102 Cranbrook Road, Ilford, IG1 4NH</li>
+                <li className="flex gap-3"><MapPin className="w-5 h-5 text-green-brand" /> <a href="https://www.google.com/maps/search/?api=1&query=1st%20Floor%2C%20Wellesley%20House%2C%2098-102%20Cranbrook%20Road%2C%20Ilford%2C%20IG1%204NH" target="_blank" rel="noopener" className="hover:text-navy">1st Floor, Wellesley House, 98–102 Cranbrook Road, Ilford, IG1 4NH</a></li>
                 <li className="flex gap-3"><Clock className="w-5 h-5 text-green-brand" /> Mon–Sat 8:00–18:00</li>
               </ul>
             </div>

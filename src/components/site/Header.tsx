@@ -7,8 +7,7 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/solar-panels", label: "Solar Panels" },
   { to: "/battery-storage", label: "Battery Storage" },
-  { to: "/commercial", label: "Commercial Solar" },
-  { to: "/finance", label: "Finance" },
+  { to: "/pricing-finance", label: "Pricing & Finance" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -17,7 +16,6 @@ export function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
-      {/* Top info bar */}
       <div className="hidden md:block bg-navy text-white/90 text-xs">
         <div className="container-page flex items-center justify-between py-1.5">
           <span className="opacity-80">MCS Certified · Fully Insured · UK-wide Installation</span>
@@ -42,7 +40,7 @@ export function Header() {
               key={n.to}
               to={n.to}
               className="px-3 py-2 rounded-lg text-sm font-medium text-navy hover:bg-muted transition"
-              activeProps={{ className: "px-3 py-2 rounded-lg text-sm font-semibold text-green-brand bg-muted" }}
+              activeProps={{ className: "px-3 py-2 rounded-lg text-sm font-semibold text-orange-brand bg-muted" }}
             >
               {n.label}
             </Link>
