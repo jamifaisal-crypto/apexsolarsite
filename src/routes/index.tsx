@@ -276,6 +276,11 @@ function HomePage() {
         </div>
       </Section>
 
+      <Section className="bg-muted">
+        <SectionHeading eyebrow="Credentials" title="Fully certified and insured" />
+        <CertificationCards />
+      </Section>
+
       <CtaBand />
     </>
   );
