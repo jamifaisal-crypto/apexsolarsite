@@ -13,6 +13,7 @@ import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SolarPanelsRouteImport } from './routes/solar-panels'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SavingsCalculatorRouteImport } from './routes/savings-calculator'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingFinanceRouteImport } from './routes/pricing-finance'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -41,6 +42,11 @@ const SolarPanelsRoute = SolarPanelsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavingsCalculatorRoute = SavingsCalculatorRouteImport.update({
+  id: '/savings-calculator',
+  path: '/savings-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
+  '/savings-calculator': typeof SavingsCalculatorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
   '/terms': typeof TermsRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
+  '/savings-calculator': typeof SavingsCalculatorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
   '/terms': typeof TermsRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/pricing-finance': typeof PricingFinanceRoute
   '/privacy': typeof PrivacyRoute
+  '/savings-calculator': typeof SavingsCalculatorRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solar-panels': typeof SolarPanelsRoute
   '/terms': typeof TermsRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/pricing-finance'
     | '/privacy'
+    | '/savings-calculator'
     | '/sitemap.xml'
     | '/solar-panels'
     | '/terms'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/pricing-finance'
     | '/privacy'
+    | '/savings-calculator'
     | '/sitemap.xml'
     | '/solar-panels'
     | '/terms'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/pricing-finance'
     | '/privacy'
+    | '/savings-calculator'
     | '/sitemap.xml'
     | '/solar-panels'
     | '/terms'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   PricingFinanceRoute: typeof PricingFinanceRoute
   PrivacyRoute: typeof PrivacyRoute
+  SavingsCalculatorRoute: typeof SavingsCalculatorRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolarPanelsRoute: typeof SolarPanelsRoute
   TermsRoute: typeof TermsRoute
@@ -227,6 +240,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/savings-calculator': {
+      id: '/savings-calculator'
+      path: '/savings-calculator'
+      fullPath: '/savings-calculator'
+      preLoaderRoute: typeof SavingsCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   PricingFinanceRoute: PricingFinanceRoute,
   PrivacyRoute: PrivacyRoute,
+  SavingsCalculatorRoute: SavingsCalculatorRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolarPanelsRoute: SolarPanelsRoute,
   TermsRoute: TermsRoute,
@@ -313,3 +334,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

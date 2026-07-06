@@ -2,15 +2,40 @@ import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
 
+// Get a free key at https://web3forms.com (enter your email, no signup) and paste it here
+const WEB3FORMS_ACCESS_KEY = "854360f7-02a0-4a0d-b635-09241a9ddfd2";
+
 export function LeadForm({ compact = false }: { compact?: boolean }) {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate submit; wire to backend later
-    setTimeout(() => navigate({ to: "/thank-you" }), 400);
+    setError(false);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "New solar survey enquiry — Apex Aims Grants website");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const result = await res.json();
+      if (result.success) {
+        navigate({ to: "/thank-you" });
+      } else {
+        setError(true);
+        setSubmitting(false);
+      }
+    } catch {
+      setError(true);
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -40,6 +65,9 @@ export function LeadForm({ compact = false }: { compact?: boolean }) {
       <button disabled={submitting} className="btn-primary btn-primary-hover mt-2 disabled:opacity-70">
         {submitting ? "Sending…" : "Book my free survey"}
       </button>
+      {error && (
+        <p className="text-xs text-destructive">Something went wrong sending your details — please call or WhatsApp us instead.</p>
+      )}
       <p className="text-xs text-muted-foreground flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-green-brand" /> No obligation. We reply within 1 working day.</p>
     </form>
   );
